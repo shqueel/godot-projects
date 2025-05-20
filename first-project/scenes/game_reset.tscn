@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://3u3oj40fodj2"]
+
+[ext_resource type="Script" uid="uid://cr1d71unsnodh" path="res://scripts/reset.gd" id="1_keor5"]
+
+[node name="gameReset" type="Node"]
+script = ExtResource("1_keor5")
