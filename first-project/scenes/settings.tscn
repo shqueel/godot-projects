@@ -1,0 +1,121 @@
+[gd_scene load_steps=8 format=3 uid="uid://r3kjqlxybdl3"]
+
+[ext_resource type="Script" uid="uid://c6fjcckeoy0ik" path="res://scripts/vol_slider.gd" id="2_6wm04"]
+[ext_resource type="Script" uid="uid://b6kws87fg15yg" path="res://scenes/btn_return.gd" id="2_f4mfi"]
+[ext_resource type="FontFile" uid="uid://7cfgut5c4mn5" path="res://assets/fonts/PixelOperator8.ttf" id="2_r6d6q"]
+[ext_resource type="FontFile" uid="uid://cah16qdsq2qct" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_6wm04"]
+[ext_resource type="Script" uid="uid://c5g7kv20tchj1" path="res://scripts/doom_mode.gd" id="5_83j8s"]
+[ext_resource type="Texture2D" uid="uid://c28skeasdmagc" path="res://assets/sprites/repeating.jpg" id="5_es4n0"]
+[ext_resource type="Texture2D" uid="uid://iaygxooy1a0l" path="res://assets/sprites/hell.png" id="6_gis3k"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="btn_return" type="Button" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("2_r6d6q")
+text = "RETURN TO MENU"
+script = ExtResource("2_f4mfi")
+
+[node name="Label" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6d6q")
+text = "Main Volume
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="main" type="HSlider" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+min_value = -80.0
+max_value = 5.0
+value = -5.0
+script = ExtResource("2_6wm04")
+audio_bus_name = "Master"
+
+[node name="Label2" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6d6q")
+text = "Music Volume
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="music" type="HSlider" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+min_value = -80.0
+max_value = 5.0
+script = ExtResource("2_6wm04")
+audio_bus_name = "Music"
+
+[node name="Label3" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("2_r6d6q")
+text = "SFX Volume
+"
+horizontal_alignment = 1
+vertical_alignment = 2
+autowrap_mode = 2
+
+[node name="sfx" type="HSlider" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+min_value = -80.0
+max_value = 5.0
+script = ExtResource("2_6wm04")
+audio_bus_name = "SFX"
+
+[node name="Label4" type="Label" parent="MarginContainer/VBoxContainer2"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_6wm04")
+text = "Doom Mode...."
+horizontal_alignment = 1
+
+[node name="CheckButton" type="CheckButton" parent="MarginContainer/VBoxContainer2" groups=["DoomMode"]]
+layout_mode = 2
+size_flags_horizontal = 4
+script = ExtResource("5_83j8s")
+
+[node name="Repeating" type="Sprite2D" parent="MarginContainer"]
+z_index = -1
+position = Vector2(570, 338)
+scale = Vector2(0.800001, 0.800001)
+texture = ExtResource("5_es4n0")
+
+[node name="Hell" type="Sprite2D" parent="MarginContainer"]
+unique_name_in_owner = true
+visible = false
+z_index = -1
+position = Vector2(569, 336)
+scale = Vector2(3.48, 3.48)
+texture = ExtResource("6_gis3k")
+
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/btn_return" to="MarginContainer/VBoxContainer2/btn_return" method="_on_pressed"]
+[connection signal="drag_ended" from="MarginContainer/VBoxContainer2/main" to="MarginContainer/VBoxContainer2/main" method="_on_drag_ended"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/main" to="MarginContainer/VBoxContainer2/main" method="_on_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/music" to="MarginContainer/VBoxContainer2/music" method="_on_value_changed"]
+[connection signal="value_changed" from="MarginContainer/VBoxContainer2/sfx" to="MarginContainer/VBoxContainer2/sfx" method="_on_value_changed"]
+[connection signal="pressed" from="MarginContainer/VBoxContainer2/CheckButton" to="MarginContainer/VBoxContainer2/CheckButton" method="_on_pressed"]

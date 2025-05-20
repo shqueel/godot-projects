@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="First Project"
-run/main_scene="uid://djske2qlruq4r"
+run/main_scene="uid://cr380f4mnqn73"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -19,6 +19,11 @@ config/icon="res://icon.svg"
 
 Music="*res://scenes/music.tscn"
 GameReset="res://scenes/game_reset.tscn"
+DoomMode="*res://scenes/doom_mode.tscn"
+
+[global_group]
+
+DoomMode=""
 
 [input]
 

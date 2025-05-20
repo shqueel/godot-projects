@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://cwshodsfedeeu"]
+
+[ext_resource type="AudioStream" uid="uid://dmbykhmab50ij" path="res://assets/music/time_for_adventure.mp3" id="1_05ggv"]
+[ext_resource type="AudioStream" uid="uid://yfckljo3ghm0" path="res://assets/music/doom-music.mp3" id="2_ibx2e"]
+[ext_resource type="Script" uid="uid://d3golnworbvbb" path="res://scripts/music.gd" id="2_qnihg"]
+
+[node name="Music" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_05ggv")
+autoplay = true
+max_distance = 4096.0
+bus = &"Music"
+script = ExtResource("2_qnihg")
+
+[node name="DoomMode" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("2_ibx2e")
+bus = &"Music"

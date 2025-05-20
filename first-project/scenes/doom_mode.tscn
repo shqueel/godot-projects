@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bsevbidwbiucy"]
+
+[ext_resource type="AudioStream" uid="uid://yfckljo3ghm0" path="res://assets/music/doom-music.mp3" id="1_jcosf"]
+
+[node name="DoomMode" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_jcosf")
+autoplay = true
+bus = &"DoomMode"
